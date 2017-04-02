@@ -6,27 +6,65 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Mahasiswa;
+use App\Pengguna;
 
 class MahasiswaController extends Controller
 {
-    public function awal()
+
+   public function awal()
     {
-        return "INI HALAMAN MAHASISWA";
+        $semuaMahasiswa = Mahasiswa::all();
+        return view('mahasiswa.awal',compact('semuaMahasiswa'));
     }
 
     public function tambah()
     {
-        return $this->simpan();
+        return view('mahasiswa.tambah');
     }
 
-    public function simpan()
+    public function simpan(Request $input)
     {
-        $mahasiswa = new Mahasiswa();
-        $mahasiswa->nama   = 'Andre Ardin Maulana';
-        $mahasiswa->nim    = '1515015224';
-        $mahasiswa->alamat = 'Jln. KH.Wahid Hasyim';
-        $mahasiswa->pengguna_id = '1';
-        $mahasiswa->save();
-        return "Data Mahasiswa dengan nama {$mahasiswa->nama} telah tersimpan di dalam database";
+
+    $mahasiswa = new mahasiswa;
+    $mahasiswa->nama = $input->nama;
+    $mahasiswa->nim = $input->nim;
+    $mahasiswa->alamat = $input->alamat;
+    $mahasiswa->pengguna_id = $input->pengguna_id;
+    $informasi = $mahasiswa->save() ? 'Berhasil simpan data' : 'Gagal simpan data';
+    return redirect('mahasiswa')->with(['informasi'=>$informasi]);
+    
+    }
+
+
+    public function edit($id)
+    {
+        $mahasiswa = Mahasiswa::find($id);
+        return view('mahasiswa.edit')->with(array('mahasiswa'=>$mahasiswa));
+    }
+
+    public function lihat($id)
+    {
+        $mahasiswa = Mahasiswa::find($id);
+        return view('mahasiswa.lihat')->with(array('mahasiswa'=>$mahasiswa));
+    }
+
+   public function update($id, Request $input)
+    {
+         $mahasiswa = mahasiswa::find($id);
+    $mahasiswa->nama = $input->nama;
+    $mahasiswa->nim = $input->nim;
+    $mahasiswa->alamat = $input->alamat;
+    $mahasiswa->pengguna_id = $input->pengguna_id;
+    $informasi = $mahasiswa->save() ? 'Berhasil update data' : 'Gagal update data';
+    return redirect('mahasiswa')->with(['informasi'=>$informasi]);
+    }
+
+     public function hapus($id)
+    {
+        $mahasiswa = Mahasiswa::find($id);
+        if($mahasiswa->pengguna()->delete()){
+            if($mahasiswa->delete()) $this->informasi = 'Berhasil hapus data';
+            return redirect('mahasiswa')-> with(['informasi'=>$this->informasi]);
+        }
     }
 }

@@ -6,24 +6,24 @@
 		<a href="{{url('ruangan/tambah') }}" class="btn btn-xs btn-primary pull-right">
 			<i class="fa fa-plus"></i> Ruangan</a>
 			<div class="clearfix"></div>
-	</div>
-	<table class="table">
-		<thead>
-		<tr>
-			<th>id</th>
-			<th>Nama Ruangan</th>
-			<th>Aksi</th>
-					</tr>
-		</thead>
-		<tbody>
-			<?php $x=1;?>
-			@foreach ($data as $ruangan)
+		</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>No.</th>
+					<th>Nama Ruangan</th>
+					<th>Aksi</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php $x=1;?>
+				@foreach ($data as $ruangan)
 				<tr>
 					<td>{{ $x++ }}</td>
 					<td>{{ $ruangan->title or 'title kosong'}}</td>
 					<td>
 						<div class="btn-group" role="group">
-							<a href="{{url('ruangan/edit/'.$ruangan)}}" class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Ubah">
+							<a href="{{url('ruangan/edit/'.$ruangan->id)}}" class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Ubah">
 								<i class="fa fa-pencil"></i>
 							</a>
 
@@ -36,10 +36,10 @@
 							</a>
 						</div>
 
-						</td>
-						</tr>
-						@endforeach	
+					</td>
 				</tr>
+				@endforeach	
+			</tr>
 		</tbody>
 	</table>
 </div>

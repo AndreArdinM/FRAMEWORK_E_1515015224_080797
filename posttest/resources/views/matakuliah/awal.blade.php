@@ -11,7 +11,8 @@
 			<thead>
 				<tr>
 					<th>No.</th>
-					<th>Nama MataKuliah</th>
+					<th>Title</th>
+					<th>Keterangan</th>
 					<th>Aksi</th>
 				</tr>
 			</thead>
@@ -21,9 +22,10 @@
 				<tr>
 					<td>{{ $x++ }}</td>
 					<td>{{ $matakuliah->title or 'title kosong'}}</td>
+					<td>{{ $matakuliah->keterangan or 'keterangan kosong'}}</td>
 					<td>
 						<div class="btn-group" role="group">
-							<a href="{{url('matakuliah/edit/'.$matakuliah)}}" class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Ubah">
+							<a href="{{url('matakuliah/edit/'.$matakuliah->id)}}" class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Ubah">
 								<i class="fa fa-pencil"></i>
 							</a>
 
