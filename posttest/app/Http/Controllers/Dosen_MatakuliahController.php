@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Dosen_Matakuliah;
 use App\dosen;
 use App\Matakuliah;
-use App\Jadwal_Matakuliah;
+use App\jadwal_matakuliah;
 
 class Dosen_MatakuliahController extends Controller
 {
@@ -29,7 +29,7 @@ class Dosen_MatakuliahController extends Controller
     public function simpan(Request $input)
     {
         $dosen_matakuliah = new Dosen_Matakuliah($input->only('dosen_id','matakuliah_id'));
-            if($dosen_matakuliah->save()) $this->informasi = "Matakuliad dan Dosen Mengajar berhasil disimpan";
+            if($dosen_matakuliah->save()) $this->informasi = "Matakuliah dan Dosen Mengajar berhasil disimpan";
             return redirect('dosen_matakuliah')->with(['informasi'=>$this->informasi]);
     }
     public function lihat($id){
@@ -46,7 +46,7 @@ class Dosen_MatakuliahController extends Controller
     {
         $dosen_matakuliah = Dosen_Matakuliah::find($id);
         $dosen_matakuliah->fill($input->only('dosen_id','matakuliah_id'));
-        if($dosen_matakuliah->save()) $this->informasi = "Matakuliad dan Dosen Mengajar berhasil diperbarui";
+        if($dosen_matakuliah->save()) $this->informasi = "Matakuliah dan Dosen Mengajar berhasil diperbarui";
         return redirect('dosen_matakuliah')->with(['informasi'=>$this->informasi]);
     }
     public function hapus($id,Request $input)

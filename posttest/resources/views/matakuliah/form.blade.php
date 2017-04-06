@@ -4,4 +4,3 @@
 		{!! Form::text('title',null,['class'=>form-control','placeholder'=>"Title"]) !!}
 	</div>
 </div>
-</div>

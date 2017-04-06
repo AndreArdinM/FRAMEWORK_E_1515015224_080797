@@ -29,9 +29,6 @@
             padding-top: 15px;
             text-align: right;
            }
-
-
-
         </style>
     </head>
     <body>
@@ -48,13 +45,16 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
+                    </li>
                     <li class="dropdown active">
-                        <a href="{{url('mahasiswa')}}" data-togle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Mahasiswa <span class="caret"></span></a>
-                            <ul class="dropdown-menu" aria-labelledby="dLabel">
-                                <li><a href="{{url('Mahasiswa')}}">Data Mahasiswa</a></li>
+                        <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Mahasiswa <span class="caret"></span>
+                        </a>
+                         <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                <li><a href="{{url('mahasiswa')}}"> Data Mahasiswa</a></li>
                                 <li class="divider"></li>
-                                <li><a href="{{url('jadwal_matakuliah')}}">Jadwal Mahasiswa</a></li>
+                                <li><a href="{{url('jadwal_matakuliah')}}"> Jadwal Mahasiswa </a></li>
                             </ul>
+                    </li>
                     </li>
                     <li class="dropdown active">
                         <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Dosen <span class="caret"></span>
@@ -62,7 +62,7 @@
                          <ul class="dropdown-menu" aria-labelledby="dLabel">
                                 <li><a href="{{url('dosen')}}">Data Dosen</a></li>
                                 <li class="divider"></li>
-                                <li><a href="{{url('dosen_matakuliah')}}">Jadwal Dosen Mengajar</a></li>
+                                <li><a href="{{url('dosen_matakuliah')}}">Dosen Mengajar</a></li>
                             </ul>
                     </li>
 
@@ -73,6 +73,7 @@
                                 <li><a href="{{url('pengguna')}}">Pengguna</a></li>
                                 <li class="divider"></li>
                                 <li><a href="{{url('ruangan')}}">Ruangan</a></li>
+                                <li class="divider"></li>
                                 <li><a href="{{url('matakuliah')}}">Matakuliah</a></li>
                             </ul>
                     </li>

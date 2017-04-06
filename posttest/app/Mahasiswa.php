@@ -8,7 +8,7 @@ class Mahasiswa extends Model
 {
 	protected $table ='mahasiswa';
 	protected $fillable =['nama','nim','alamat','pengguna_id'];
-	// protected guarded =['id'];
+	protected $guarded =['id'];
 
 	public function Pengguna()
 	{
@@ -30,6 +30,6 @@ class Mahasiswa extends Model
 
 	public function jadwal_matakuliah()
     {
-        return $this->hasMany(Jadwal_Matakuliah::class);
+        return $this->hasMany(jadwal_matakuliah::class);
     }
 }

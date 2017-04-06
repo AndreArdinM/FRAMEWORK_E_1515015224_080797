@@ -2,7 +2,7 @@
 @section('container')
 <div class="panel panel-warning">
 	<div class="panel-heading">
-		<strong><a href="{{ url('mahasiswa') }}"><i style+"color:#8a6d3b" class="fa text-default fa-chevron-left"></i></a> Detail Data Mahasiswa</strong>		
+		<strong><a href="{{ url('jadwa_matakuliah) }}"><i style+"color:#8a6d3b" class="fa text-default fa-chevron-left"></i></a> Detail Data Mahasiswa</strong>		
 	</div>
 	<table class="table">
 		<tr>
@@ -18,15 +18,15 @@
 		<tr>
 			<td>Alamat</td>
 			<td>:</td>
-			<td>{{ $mahasiswa->alamat }}</td>
+			<td>{{ $mahasiswa->nama }}</td>
 		</tr>
 		<tr>
-			<td>Username</td>
+			<td>Username/td>
 			<td>:</td>
 			<td>{{ $mahasiswa->pengguna->username }}</td>
 		</tr>
 		<tr>
-			<td>Password</td>
+			<td>Password/td>
 			<td>:</td>
 			<td>{{ $mahasiswa->pengguna->password }}</td>
 		</tr>
