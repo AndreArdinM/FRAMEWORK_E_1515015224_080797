@@ -10,9 +10,59 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+use Illuminate\Http\Request;
+
+Route::get('tess', function (){
+	echo Form::open(['url'=>'/']).
+			Form::label('nama').
+			Form::text('nama',null).
+			Form::submit('kirim').
+		 Form::close();
+});
+Route::post('tess',function (Request $request)
+{
+	echo "Hasil dari form adalah : ". $request->nama;
+});
+
+
+Route::get('tess1',function (Illuminate\Http\Request $request)
+{
+	echo "ini adalah request ". $request->nama;
+});
+
+
 Route::get('/', function(){
 	return view('master');
 });
+
+
+Route::get('tes', function()
+	{
+		return\App\dosen_matakuliah::whereHas('dosen', function($query){
+			$query->where('nama', 'like', '%u%');
+		})->with('dosen')->groupBy('dosen_id')->get();
+	});
+
+Route::get('tes1', function()
+{
+	return\App\dosen_matakuliah::whereWas('dosen', function($query)
+	{
+		$query->where('nama', 'like', '%u%');
+	})
+
+	->orWhereHas('matakuliah',function($kueri)
+	{
+		$kueri->where('title','like','%b%');
+	})
+	->with('dosen','matakuliah')
+	->groupBy('dosen_id')
+	->get();
+});
+
+
+Route::get('ujiHas', 'RelationshipRebornController@ujiHas');
+
+Route::get('ujiDoesntHave', 'RelationshipRebornController@ujiDoesntHave');
 
 Route::get('/public', function(){
 	return view('public');

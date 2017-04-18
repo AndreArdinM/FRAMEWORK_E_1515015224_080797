@@ -3,14 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use App\Dosen_Matakuliah;
 use App\dosen;
-use App\Matakuliah;
+use App\dosen_matakuliah;
+use App\Http\Requests\dosen_matakuliahRequest;
+use App\matakuliah;
 use App\jadwal_matakuliah;
+use Input;
+use Redirect;
+use informasi;
 
-class Dosen_MatakuliahController extends Controller
+class dosen_matakuliahcontroller extends Controller
 {
     public function awal()
     {
@@ -26,10 +30,10 @@ class Dosen_MatakuliahController extends Controller
         return $this->simpan();
     }
 
-    public function simpan(Request $input)
+    public function simpan(dosen_matakuliahRequest $input)
     {
         $dosen_matakuliah = new Dosen_Matakuliah($input->only('dosen_id','matakuliah_id'));
-            if($dosen_matakuliah->save()) $this->informasi = "Matakuliah dan Dosen Mengajar berhasil disimpan";
+            if($dosen_matakuliah->save()) $this->informasi = "Matakuliad dan Dosen Mengajar berhasil disimpan";
             return redirect('dosen_matakuliah')->with(['informasi'=>$this->informasi]);
     }
     public function lihat($id){
@@ -42,11 +46,11 @@ class Dosen_MatakuliahController extends Controller
         $matakuliah = new Matakuliah;
         return view('dosen_matakuliah.edit',compact('dosen','matakuliah','dosen_matakuliah'));
     }
-    public function update($id,Request $input)
+    public function update($id,dosen_matakuliahRequest $input)
     {
         $dosen_matakuliah = Dosen_Matakuliah::find($id);
         $dosen_matakuliah->fill($input->only('dosen_id','matakuliah_id'));
-        if($dosen_matakuliah->save()) $this->informasi = "Matakuliah dan Dosen Mengajar berhasil diperbarui";
+        if($dosen_matakuliah->save()) $this->informasi = "Matakuliad dan Dosen Mengajar berhasil diperbarui";
         return redirect('dosen_matakuliah')->with(['informasi'=>$this->informasi]);
     }
     public function hapus($id,Request $input)
@@ -55,5 +59,5 @@ class Dosen_MatakuliahController extends Controller
         if($dosen_matakuliah->delete()) $this->informasi = "Matakuliad dan Mahasiswa berhasil dihapus";
         return redirect('dosen_matakuliah')-> with(['informasi'=>$this->informasi]);
     }
-}
 
+    }
