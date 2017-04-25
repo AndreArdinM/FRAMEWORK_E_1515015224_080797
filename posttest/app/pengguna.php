@@ -2,10 +2,14 @@
 
 namespace App;
 
+use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Auth\Password\CanResetPassword;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 
-class Pengguna extends Model 
+class Pengguna extends Model implements AuthenticatableContract
 {
+	use Authenticatable;
 	protected $table = 'pengguna';
 	protected $fillable =['username','password'];
 	
@@ -16,8 +20,8 @@ class Pengguna extends Model
 	{
 		return $this->hasOne(Mahasiswa::class);
 	}
-	// public function peran()
-	// {
-	// 	return $this->belongsToMany(Peran::class);
-	// }
+	public function peran()
+	{
+		return $this->belongsToMany(Peran::class);
+	}
 }

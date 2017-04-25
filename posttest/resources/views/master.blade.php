@@ -41,7 +41,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="{{url('/')}}" class="navbar-brand">laravel -5</a>
+                <a href="{{url('/')}}" class="navbar-brand">Laravel -5</a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
@@ -77,6 +77,7 @@
                                 <li><a href="{{url('matakuliah')}}">Matakuliah</a></li>
                             </ul>
                     </li>
+                    <li class="dropdown active"><a href="{{ url('logout') }}">Logout</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
